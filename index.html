@@ -4,157 +4,157 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Space Food</title>
-  <link rel="icon" href="https://raw.githubusercontent.com/rase1q/test/main/logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
     body {
-      font-family: 'Arial', sans-serif;
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
       background: url('https://raw.githubusercontent.com/rase1q/test/main/fon.png') no-repeat center center fixed;
       background-size: cover;
       color: white;
     }
     header {
-      position: sticky;
+      position: fixed;
       top: 0;
-      background-color: rgba(0, 0, 0, 0.85);
-      padding: 10px 20px;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.85);
       z-index: 1000;
-    }
-    #navbar {
+      padding: 10px 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
+      padding: 10px 40px;
     }
-    #navbar img {
+    .logo {
       height: 50px;
     }
-    #menu ul {
+    nav {
       display: flex;
+      gap: 20px;
       flex-wrap: wrap;
-      list-style: none;
-      gap: 15px;
     }
-    #menu li {
+    nav button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 16px;
       cursor: pointer;
-      padding: 5px 10px;
-      border-radius: 8px;
-      transition: background 0.3s;
     }
-    #menu li:hover, #menu .active {
-      background-color: #333;
+    nav button:hover, nav button.active {
+      border-bottom: 2px solid white;
     }
     .carousel {
-      width: 100%;
-      height: 300px;
-      margin-top: 20px;
-      overflow: hidden;
-      position: relative;
+      margin-top: 100px;
+      text-align: center;
     }
     .carousel img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      animation: fade 1s ease-in-out;
+      width: 90%;
+      max-width: 800px;
+      border-radius: 20px;
+      animation: fadein 1s;
     }
-    @keyframes fade {
+    @keyframes fadein {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-    #products {
+    .tubes {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-      margin: 40px;
+      margin: 40px 20px;
     }
-    .product {
-      width: 150px;
+    .tube {
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      border-radius: 20px;
       text-align: center;
+      width: 120px;
     }
-    .product img {
-      width: 100%;
+    .tube img {
+      height: 100px;
+    }
+    .footer {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 30px;
+      text-align: center;
+      color: white;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-
-<header>
-  <div id="navbar">
-    <img src="https://raw.githubusercontent.com/rase1q/test/main/logo.png" alt="Logo">
-    <nav id="menu">
-      <ul>
-        <li class="active" onclick="changeCategory('breakfast', event)">Завтрак</li>
-        <li onclick="changeCategory('lunch', event)">Обед</li>
-        <li onclick="changeCategory('dinner', event)">Ужин</li>
-        <li onclick="changeCategory('snacks', event)">Закуски</li>
-        <li onclick="changeCategory('dessert', event)">Десерт</li>
-        <li onclick="changeCategory('fastfood', event)">Фаст Фуд</li>
-        <li onclick="changeCategory('fruits', event)">Фрукты</li>
-        <li onclick="changeCategory('vegetables', event)">Овощи</li>
-        <li onclick="changeCategory('drinks', event)">Напитки</li>
-        <li onclick="changeCategory('combo', event)">Комбо</li>
-      </ul>
+  <header>
+    <img src="https://raw.githubusercontent.com/rase1q/test/main/logo.png" class="logo">
+    <nav>
+      <button onclick="changeCategory('breakfast')">Завтрак</button>
+      <button onclick="changeCategory('lunch')" class="active">Обед</button>
+      <button onclick="changeCategory('dinner')">Ужин</button>
+      <button onclick="changeCategory('snack')">Закуски</button>
+      <button onclick="changeCategory('dessert')">Десерт</button>
+      <button onclick="changeCategory('fastfood')">Фаст Фуд</button>
+      <button onclick="changeCategory('fruits')">Фрукты</button>
+      <button onclick="changeCategory('vegetables')">Овощи</button>
+      <button onclick="changeCategory('drinks')">Напитки</button>
+      <button onclick="changeCategory('combo')">Комбо</button>
     </nav>
+  </header>
+
+  <section class="carousel">
+    <img id="carouselImage" src="https://raw.githubusercontent.com/rase1q/test/main/up.png">
+  </section>
+
+  <section class="tubes" id="tubeContainer">
+    <!-- Tubes will load dynamically -->
+  </section>
+
+  <div class="footer">
+    Работа у нас  •  О компании  •  Обратная связь<br>
+    Контакт центр +345 698 677 32 29  •  Правовая информация
+    <div style="margin-top:10px;">
+      <img src="https://raw.githubusercontent.com/rase1q/test/main/c7433aeb-c8bb-48ae-a838-c5ebd9e5cfc1.png" height="30">
+    </div>
   </div>
-</header>
 
-<div class="carousel">
-  <img id="carousel-image" src="https://raw.githubusercontent.com/rase1q/test/main/up.png" alt="carousel">
-</div>
+  <script>
+    const carouselImages = [
+      'https://raw.githubusercontent.com/rase1q/test/main/up.png',
+      'https://raw.githubusercontent.com/rase1q/test/main/up2.png'
+    ];
+    let carouselIndex = 0;
 
-<div id="products"></div>
+    setInterval(() => {
+      carouselIndex = (carouselIndex + 1) % carouselImages.length;
+      const img = document.getElementById('carouselImage');
+      img.src = carouselImages[carouselIndex];
+    }, 4000);
 
-<script>
-  const images = [
-    "https://raw.githubusercontent.com/rase1q/test/main/up.png",
-    "https://raw.githubusercontent.com/rase1q/test/main/up2.png"
-  ];
-  let current = 0;
-  setInterval(() => {
-    current = (current + 1) % images.length;
-    document.getElementById("carousel-image").src = images[current];
-  }, 4000);
+    const tubesData = {
+      lunch: [
+        'tube1.png','tube2.png','tube3.png','tube4.png','tube5.png','tube6.png','tube7.png','tube8.png','tube9.png','tube10.png','tube11.png'
+      ],
+      breakfast: [
+        'tube1.png','tube2.png','tube3.png','tube4.png','tube5.png','tube6.png','tube7.png','tube8.png','tube9.png','tube10.png','tube11.png'
+      ],
+      // add more as needed
+    };
 
-  const productData = {
-    breakfast: ["tube1.png", "tube2.png"],
-    lunch: ["tube3.png", "tube4.png"],
-    dinner: ["tube5.png"],
-    snacks: ["tube6.png"],
-    dessert: ["tube7.png"],
-    fastfood: ["tube8.png"],
-    fruits: ["tube9.png"],
-    vegetables: ["tube10.png"],
-    drinks: ["tube11.png"],
-    combo: ["tube12.png"]
-  };
-
-  function changeCategory(category, event) {
-    document.querySelectorAll('#menu li').forEach(li => li.classList.remove('active'));
-    if (event) event.target.classList.add('active');
-
-    const container = document.getElementById('products');
-    container.innerHTML = '';
-    const products = productData[category] || [];
-    if (products.length === 0) {
-      container.innerHTML = '<p>Нет продуктов в этой категории.</p>';
-      return;
+    function changeCategory(category) {
+      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      const container = document.getElementById('tubeContainer');
+      container.innerHTML = '';
+      if (!tubesData[category]) return;
+      tubesData[category].forEach(src => {
+        const tube = document.createElement('div');
+        tube.className = 'tube';
+        tube.innerHTML = `<img src="https://raw.githubusercontent.com/rase1q/test/main/${src}" alt="tube">`;
+        container.appendChild(tube);
+      });
     }
-    products.forEach(src => {
-      const product = document.createElement('div');
-      product.className = 'product';
-      product.innerHTML = `<img src="https://raw.githubusercontent.com/rase1q/test/main/${src}" alt="tube">`;
-      container.appendChild(product);
-    });
-  }
 
-  // Стартовая загрузка
-  changeCategory('breakfast');
-</script>
-
+    // Initial load
+    changeCategory('lunch');
+  </script>
 </body>
 </html>
