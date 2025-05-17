@@ -2,190 +2,157 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Space Food</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.ico">
   <style>
     body {
       margin: 0;
-      font-family: sans-serif;
-      background-image: url('https://raw.githubusercontent.com/rase1q/test/main/fon.png');
+      font-family: 'Arial', sans-serif;
+      background: url('https://raw.githubusercontent.com/rase1q/test/main/fon.png') no-repeat center center fixed;
       background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
       color: white;
     }
 
     header {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 10px 30px;
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .logo {
+      height: 60px;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 15px;
-      margin: 0;
-      padding: 0;
+      gap: 20px;
     }
 
     nav ul li {
       cursor: pointer;
+      padding: 5px 10px;
+      border-bottom: 2px solid transparent;
     }
 
-    .combo {
-      text-align: center;
-      padding: 20px;
+    nav ul li:hover, nav ul li.active {
+      border-bottom: 2px solid white;
     }
 
-    .combo img {
-      width: 80%;
-      max-width: 800px;
-      border-radius: 15px;
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      margin: 20px auto;
+      overflow: hidden;
+      border-radius: 20px;
     }
 
-    .price {
-      font-size: 24px;
-      font-weight: bold;
-      margin-top: 10px;
+    .carousel img {
+      width: 100%;
+      height: auto;
+      transition: opacity 1s ease-in-out;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
-    .products {
+    .carousel img.hidden {
+      opacity: 0;
+    }
+
+    .product-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
       justify-content: center;
+      gap: 20px;
       padding: 20px;
     }
 
     .product {
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
       padding: 10px;
-      width: 150px;
+      border-radius: 15px;
       text-align: center;
+      width: 150px;
     }
 
     .product img {
-      width: 100%;
-      height: auto;
-    }
-
-    footer {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 20px;
-      text-align: center;
-      font-size: 14px;
-    }
-
-    .footer-links a {
-      margin: 0 10px;
-      color: white;
-      text-decoration: none;
-    }
-
-    .social img {
-      width: 24px;
-      margin: 0 5px;
+      width: 100px;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Space Food logo" class="logo">
+    <img src="https://raw.githubusercontent.com/rase1q/test/main/logo.png" alt="Logo" class="logo">
     <nav>
-      <ul>
-        <li>Завтрак</li>
-        <li>Обед</li>
-        <li>Ужин</li>
-        <li>Закуски</li>
-        <li>Десерт</li>
-        <li>Фаст Фуд</li>
-        <li>Фрукты</li>
-        <li>Овощи</li>
-        <li>Напитки</li>
-        <li>Комбо</li>
+      <ul id="menu">
+        <li class="active" onclick="changeCategory('breakfast')">Завтрак</li>
+        <li onclick="changeCategory('lunch')">Обед</li>
+        <li onclick="changeCategory('dinner')">Ужин</li>
+        <li onclick="changeCategory('snack')">Закуски</li>
+        <li onclick="changeCategory('dessert')">Десерт</li>
+        <li onclick="changeCategory('fastfood')">Фаст Фуд</li>
+        <li onclick="changeCategory('fruit')">Фрукты</li>
+        <li onclick="changeCategory('vegetables')">Овощи</li>
+        <li onclick="changeCategory('drinks')">Напитки</li>
+        <li onclick="changeCategory('combo')">Комбо</li>
       </ul>
     </nav>
   </header>
 
-  <section class="combo">
-    <h2>Звёздное комбо</h2>
-    <div class="combo-wrapper">
-      <img src="https://raw.githubusercontent.com/rase1q/test/main/up.png" alt="Комбо продукты">
-      <p class="price">20,9 ⌀</p>
-    </div>
+  <div class="carousel">
+    <img src="https://raw.githubusercontent.com/rase1q/test/main/up.png" id="carousel1">
+    <img src="https://raw.githubusercontent.com/rase1q/test/main/up2.png" id="carousel2" class="hidden">
+  </div>
+
+  <section class="product-list" id="products">
+    <!-- Товары будут подгружаться через JavaScript -->
   </section>
 
-  <main class="products">
-    <div class="product">
-      <img src="avocado-toast.png" alt="Авокадо тост">
-      <p>АВОКАДО ТОСТ</p>
-      <span>6,2 ⌀</span>
-    </div>
-    <div class="product">
-      <img src="bliny.png" alt="Блины">
-      <p>БЛИНЫ</p>
-      <span>5,3 ⌀</span>
-    </div>
-    <div class="product">
-      <img src="dranik.png" alt="Драник">
-      <p>ДРАНИК</p>
-      <span>4,9 ⌀</span>
-    </div>
-    <div class="product">
-      <img src="zapekanka.png" alt="Запеканка">
-      <p>ЗАПЕКАНКА</p>
-      <span>5,5 ⌀</span>
-    </div>
-    <div class="product">
-      <img src="yogurt.png" alt="Йогурт">
-      <p>ЙОГУРТ</p>
-      <span>5,0 ⌀</span>
-    </div>
-    <div class="product">
-      <img src="oatmeal.png" alt="Овсянка">
-      <p>ОВСЯНКА</p>
-      <span>5,8 ⌀</span>
-    </div>
-    <div class="product">
-      <img src="oladi.png" alt="Оладьи">
-      <p>ОЛАДЬИ</p>
-      <span>5,3 ⌀</span>
-    </div>
-    <div class="product">
-      <img src="omlet.png" alt="Омлет">
-      <p>ОМЛЕТ</p>
-      <span>5,5 ⌀</span>
-    </div>
-    <div class="product">
-      <img src="syrniki.png" alt="Сырники">
-      <p>СЫРНИКИ</p>
-      <span>5,5 ⌀</span>
-    </div>
-    <div class="product">
-      <img src="egg-bacon.png" alt="Яичница с беконом">
-      <p>ЯИЧНИЦА С БЕКОНОМ</p>
-      <span>6,0 ⌀</span>
-    </div>
-  </main>
+  <script>
+    const carouselImages = [
+      document.getElementById('carousel1'),
+      document.getElementById('carousel2')
+    ];
+    let current = 0;
+    setInterval(() => {
+      carouselImages[current].classList.add('hidden');
+      current = (current + 1) % carouselImages.length;
+      carouselImages[current].classList.remove('hidden');
+    }, 5000);
 
-  <footer>
-    <div class="footer-links">
-      <a href="#">Работа у нас</a>
-      <a href="#">О компании</a>
-      <a href="#">Обратная связь</a>
-    </div>
-    <p>Контакт центр +345 698 677 32 29 · Правовая информация</p>
-    <div class="social">
-      <img src="fb-icon.png" alt="Facebook">
-      <img src="inst-icon.png" alt="Instagram">
-      <img src="vk-icon.png" alt="VK">
-    </div>
-  </footer>
+    const data = {
+      breakfast: [
+        { name: 'Авокадо тост', price: '6,2 Ø', img: 'https://raw.githubusercontent.com/rase1q/test/main/avocado.png' },
+        { name: 'Блины', price: '5,3 Ø', img: 'https://raw.githubusercontent.com/rase1q/test/main/bliny.png' },
+        // Добавьте остальные изображения по мере загрузки в репозиторий
+      ],
+      lunch: [
+        { name: 'Омлет', price: '5,5 Ø', img: 'https://raw.githubusercontent.com/rase1q/test/main/omlet.png' }
+      ]
+    };
+
+    function changeCategory(category) {
+      document.querySelectorAll('#menu li').forEach(li => li.classList.remove('active'));
+      event.target.classList.add('active');
+      const products = data[category] || [];
+      const container = document.getElementById('products');
+      container.innerHTML = '';
+      for (const item of products) {
+        container.innerHTML += `
+          <div class="product">
+            <img src="${item.img}" alt="${item.name}">
+            <p>${item.name}</p>
+            <p>${item.price}</p>
+          </div>
+        `;
+      }
+    }
+
+    window.onload = () => changeCategory('breakfast');
+  </script>
 </body>
 </html>
